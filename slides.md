@@ -20,7 +20,7 @@ verticalSeparator: ^--
 
 ## Design grâce au DSS
 
-<img src="http://www.plantuml.com/plantuml/svg/XLAzRjim4DxlAGxkOXkm0CbEXWn5sWJsrWhnseKMppORYbJ94mgZoFEqtli6Uh4UbQhs8AGQXCFtm_kvku-i0hUrXVXiNAE2gZ7ooPByWwbwvcWq8TKDdx2cUaSX0XiMoUVTLwhOxE_mMqjOYSSRnbePn-JKpX84uPKxY7RoqJidYkwSah3n3ibn49jlgoF52Rwpvd3aGo1o-0CQLJshW_WUUXwRq9sZE7ghYByV3PFeAgjYn0dA9tyLiSn7i684MyBB9SiJHNbEjnXFaRjVDU7qjJ3KFZL4ixToFkOZM362BQ-x7E5N_-5lHh1RS9ufXPysEJnucMhtsr8ROFFqOLi2EOr9SIKhtfAzG9dZGY_UftBlq3VT-NLXyTzmlhYfxivxumn5L2tEvu_RxNm-0t4i5jBw4Dm2bCNVnrOWxIKm7u92sEMGQh3S04WVcDaiWL8hPY5BxalzQuHISP0JMglkfzA4qurVpn3aHdGh9sZxisfiMYqGurvLngRTMNLzWQ0f3lUNNGO0aY1BsOTW9JEv5xgjxHy0" class="reveal stretch" alt-text="Design grâce au DSS">
+<img src="http://www.plantuml.com/plantuml/svg/XLAzRjim4DxlAGxkOXkm0CbEXWn5sWJsrWhnseKMppORYbJ94mgZoFEqtli6Uh4UbQhs8AGQXCFtm_kvku-i0hUrXVXiNAE2gZ7ooPByWwbwvcWq8TKDdx2cUaSX0XiMoUVTLwhOxE_mMqjOYSSRnbePn-JKpX84uPKxY7RoqJidYkwSah3n3ibn49jlgoF52Rwpvd3aGo1o-0CQLJshW_WUUXwRq9sZE7ghYByV3PFeAgjYn0dA9tyLiSn7i684MyBB9SiJHNbEjnXFaRjVDU7qjJ3KFZL4ixToFkOZM362BQ-x7E5N_-5lHh1RS9ufXPysEJnucMhtsr8ROFFqOLi2EOr9SIKhtfAzG9dZGY_UftBlq3VT-NLXyTzmlhYfxivxumn5L2tEvu_RxNm-0t4i5jBw4Dm2bCNVnrOWxIKm7u92sEMGQh3S04WVcDaiWL8hPY5BxalzQuHISP0JMglkfzA4qurVpn3aHdGh9sZxisfiMYqGurvLngRTMNLzWQ0f3lUNNGO0aY1BsOTW9JEv5xgjxHy0" class="reveal stretch plain" alt-text="Design grâce au DSS">
 
 --
 
@@ -116,3 +116,6 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 Certaines technologies 🤠 peuvent êtres incompatibles avec cette méthodologie de séparation.
 
 **Vous devez respecter la contrainte de la séparation des couches.**
+
+Note:
+Demandez à votre enseignant ou chargé de lab pour de l'aide au besoin.
