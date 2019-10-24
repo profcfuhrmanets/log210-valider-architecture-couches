@@ -14,13 +14,13 @@ verticalSeparator: --
 
 ### Cowboy Hacking 🤠
 
-![Mauvaise couplage](http://www.plantuml.com/plantuml/svg/RP9BZXCn54NdNiMb60235afLaa6hQJMV8H8HEtXjlrHC_37-W2B4Ug3NaOrXDor7WieWFdLzNhqxgBkKAUPYZKX7xG95iaZvPBZ-Hot_kL6yfsBothlio3BUHar67BHYi0tv1ClsdcCIBmplCx97rFCXG-d8CcllHDRPC3xTVsdF-sjyBOppBuAbA0_yJ3IFt5oTOSS5Yf7E3srvcmQx71dIb-gc0S-3TaVy487aaUOwylxn1Y6U7r9r7uUgzlsWCrVF-NfGWbk9ZtxMRJU5OBIiuZU6OAVG724DfOG1xJUqYTrg8HiNiadylDJvp2apL44wfNp-RHal_tQ7yfQqurUNSl-_wyDg8HiNicaXMozacuLiM_lkLhXILtLVfx7Jr6dTQTDfAyHkxCDFD7QQEgshEFNmYTQTDfsskCPD-xuWlV7npH1P3RVlc8hq9K0nscbevflNJRkj_U_OgMBD7m00){class="reveal stretch plain"}
+<img src="http://www.plantuml.com/plantuml/svg/RP9BZXCn54NdNiMb60235afLaa6hQJMV8H8HEtXjlrHC_37-W2B4Ug3NaOrXDor7WieWFdLzNhqxgBkKAUPYZKX7xG95iaZvPBZ-Hot_kL6yfsBothlio3BUHar67BHYi0tv1ClsdcCIBmplCx97rFCXG-d8CcllHDRPC3xTVsdF-sjyBOppBuAbA0_yJ3IFt5oTOSS5Yf7E3srvcmQx71dIb-gc0S-3TaVy487aaUOwylxn1Y6U7r9r7uUgzlsWCrVF-NfGWbk9ZtxMRJU5OBIiuZU6OAVG724DfOG1xJUqYTrg8HiNiadylDJvp2apL44wfNp-RHal_tQ7yfQqurUNSl-_wyDg8HiNicaXMozacuLiM_lkLhXILtLVfx7Jr6dTQTDfAyHkxCDFD7QQEgshEFNmYTQTDfsskCPD-xuWlV7npH1P3RVlc8hq9K0nscbevflNJRkj_U_OgMBD7m00" class="reveal stretch plain" alt-text="">
 
 --
 
 ## Design grâce au DSS
 
-![Design grâce au DSS](http://www.plantuml.com/plantuml/svg/XLAzRjim4DxlAGxkOXkm0CbEXWn5sWJsrWhnseKMppORYbJ94mgZoFEqtli6Uh4UbQhs8AGQXCFtm_kvku-i0hUrXVXiNAE2gZ7ooPByWwbwvcWq8TKDdx2cUaSX0XiMoUVTLwhOxE_mMqjOYSSRnbePn-JKpX84uPKxY7RoqJidYkwSah3n3ibn49jlgoF52Rwpvd3aGo1o-0CQLJshW_WUUXwRq9sZE7ghYByV3PFeAgjYn0dA9tyLiSn7i684MyBB9SiJHNbEjnXFaRjVDU7qjJ3KFZL4ixToFkOZM362BQ-x7E5N_-5lHh1RS9ufXPysEJnucMhtsr8ROFFqOLi2EOr9SIKhtfAzG9dZGY_UftBlq3VT-NLXyTzmlhYfxivxumn5L2tEvu_RxNm-0t4i5jBw4Dm2bCNVnrOWxIKm7u92sEMGQh3S04WVcDaiWL8hPY5BxalzQuHISP0JMglkfzA4qurVpn3aHdGh9sZxisfiMYqGurvLngRTMNLzWQ0f3lUNNGO0aY1BsOTW9JEv5xgjxHy0){class="reveal stretch"}{style=width:60%;}
+<img src="http://www.plantuml.com/plantuml/svg/XLAzRjim4DxlAGxkOXkm0CbEXWn5sWJsrWhnseKMppORYbJ94mgZoFEqtli6Uh4UbQhs8AGQXCFtm_kvku-i0hUrXVXiNAE2gZ7ooPByWwbwvcWq8TKDdx2cUaSX0XiMoUVTLwhOxE_mMqjOYSSRnbePn-JKpX84uPKxY7RoqJidYkwSah3n3ibn49jlgoF52Rwpvd3aGo1o-0CQLJshW_WUUXwRq9sZE7ghYByV3PFeAgjYn0dA9tyLiSn7i684MyBB9SiJHNbEjnXFaRjVDU7qjJ3KFZL4ixToFkOZM362BQ-x7E5N_-5lHh1RS9ufXPysEJnucMhtsr8ROFFqOLi2EOr9SIKhtfAzG9dZGY_UftBlq3VT-NLXyTzmlhYfxivxumn5L2tEvu_RxNm-0t4i5jBw4Dm2bCNVnrOWxIKm7u92sEMGQh3S04WVcDaiWL8hPY5BxalzQuHISP0JMglkfzA4qurVpn3aHdGh9sZxisfiMYqGurvLngRTMNLzWQ0f3lUNNGO0aY1BsOTW9JEv5xgjxHy0" class="reveal stretch" alt-text="Design grâce au DSS">
 
 --
 
@@ -70,6 +70,7 @@ Trois opérations système:
 --
 
 <!-- .slide: data-background="#ddFFdd" -->
+
 ## Opération système codée
 
 ```Typescript
