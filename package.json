@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/martinmurphy/slidestemplate.git"
+    "url": "git+https://github.com/profcfuhrmanets/slidestemplate.git"
   },
   "author": "Martin Murphy",
   "license": "MIT",
@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/martinmurphy/slidestemplate#readme",
   "devDependencies": {
-    "reveal-md": "^3.3.1"
+    "reveal-md": "^3.1.0"
   }
 }
