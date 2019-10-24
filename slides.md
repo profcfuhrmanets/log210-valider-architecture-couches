@@ -3,8 +3,8 @@ theme : "beige"
 transition: "convex"
 highlightTheme: "github"
 title: Valider l'architecture en couches
-separator: ---
-verticalSeparator: --
+separator: ^---
+verticalSeparator: ^--
 
 ---
 
@@ -69,9 +69,9 @@ Trois opérations système:
 
 --
 
-<!-- .slide: data-background="#ddFFdd" -->
-
 ## Opération système codée
+
+<!-- .slide: data-background="#ddFFdd" -->
 
 ```Typescript
 /**
