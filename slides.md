@@ -2,13 +2,13 @@
 theme : "beige"
 transition: "convex"
 highlightTheme: "github"
-title: Valider l'architecture en couches
+title: "LOG210: Valider l'architecture en couches"
 separator: ^---
 verticalSeparator: ^--
 
 ---
 
-# Valider l'architecture en couches
+# LOG210: Valider l'architecture en couches
 
 --
 
