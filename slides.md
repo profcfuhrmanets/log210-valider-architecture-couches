@@ -12,9 +12,9 @@ verticalSeparator: ^--
 
 --
 
-### Cowboy Hacking 🤠
+### Hacking Cowboy 🤠
 
-<img src="http://www.plantuml.com/plantuml/svg/RP9BZXCn54NdNiMb60235afLaa6hQJMV8H8HEtXjlrHC_37-W2B4Ug3NaOrXDor7WieWFdLzNhqxgBkKAUPYZKX7xG95iaZvPBZ-Hot_kL6yfsBothlio3BUHar67BHYi0tv1ClsdcCIBmplCx97rFCXG-d8CcllHDRPC3xTVsdF-sjyBOppBuAbA0_yJ3IFt5oTOSS5Yf7E3srvcmQx71dIb-gc0S-3TaVy487aaUOwylxn1Y6U7r9r7uUgzlsWCrVF-NfGWbk9ZtxMRJU5OBIiuZU6OAVG724DfOG1xJUqYTrg8HiNiadylDJvp2apL44wfNp-RHal_tQ7yfQqurUNSl-_wyDg8HiNicaXMozacuLiM_lkLhXILtLVfx7Jr6dTQTDfAyHkxCDFD7QQEgshEFNmYTQTDfsskCPD-xuWlV7npH1P3RVlc8hq9K0nscbevflNJRkj_U_OgMBD7m00" class="reveal stretch plain" alt-text="">
+<img src="http://www.plantuml.com/plantuml/svg/RP9BZXCn54NdNiMb60235afLaa6hQJMV8H8HEtXjlrHC_37-W2B4Ug3NaOrXDor7WieWFdLzNhqxgBkKAUPYZKX7xG95iaZvPBZ-Hot_kL6yfsBothlio3BUHar67BHYi0tv1ClsdcCIBmplCx97rFCXG-d8CcllHDRPC3xTVsdF-sjyBOppBuAbA0_yJ3IFt5oTOSS5Yf7E3srvcmQx71dIb-gc0S-3TaVy487aaUOwylxn1Y6U7r9r7uUgzlsWCrVF-NfGWbk9ZtxMRJU5OBIiuZU6OAVG724DfOG1xJUqYTrg8HiNiadylDJvp2apL44wfNp-RHal_tQ7yfQqurUNSl-_wyDg8HiNicaXMozacuLiM_lkLhXILtLVfx7Jr6dTQTDfAyHkxCDFD7QQEgshEFNmYTQTDfsskCPD-xuWlV7npH1P3RVlc8hq9K0nscbevflNJRkj_U_OgMBD7m00" class="reveal stretch plain" alt-text="Cowboy hacking, beaucoup de couplage">
 
 --
 
@@ -31,6 +31,12 @@ verticalSeparator: ^--
 ## Couches dans le Squelette
 
 <img src="http://www.plantuml.com/plantuml/proxy?fmt=svg&src=https://raw.githubusercontent.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/master/docs/figure-f16.24-web.puml?cacheinc=6" class="plain reveal stretch" alt-text="Diagramme de séparation des couches avec une opération système envoyée au contrôleur GRASP">
+
+--
+
+## Couches dans le Squelette (DSS)
+
+<img src="https://www.plantuml.com/plantuml/svg/0/VPF1RXen48RlVeeHFP2W58fwGn4AXOWcJLC4fBdqOhoJNMUzu-tO9k6Dohrlm8jr5gajv82qyagUyVV_-u_tAaJDCLLEXT9IhLbN4EB6eQnipPlAIfioPvyeCzvvXiYQWfIGecf3B6m0UJGKch8NjZ4YmPEd29RWqLBcNu9g_yTb-AIJYqq7wGhX2zlG7BbPZbLxMM10yB503k2yBo5dr7lKuliKpYfTYid4ABguQSlRadoCSvY99iFexWuU5jVpnO4uz3-Sdp8GTDuiTDBb3PLmwnEJTgVQNakJmSAmhUEfjXbAIdmaU9XUv8Gg62q3wNS_7Wu9VoOaWrynDAv7pkO4HWQ1hBI94a1h82unSGjqW6Uryg_G6lja2eIQTziWlJfQJoru5sgsb4k-I4hmqHfRQnbRQ_0fnTYq2685bvVtUcrp7ONwYAlX4DvqptsAVnLP8MKWgaVAcQ-q9HHDCLn4urbIF8RSOfhWH0pkCKPKnn8MxtuxGK_deyLiE3m-qkrszxtXd-Gpl1-AuG4OPoKdLgjcWsNZyt8vW-dryWVrT6rxwtulssqhpOmimhsnN455FihDMoC3Nu0PmBTwj-LzLX0s8Uv-LQYu0He1TZg7W3ForNcdeqnJ3b8MRmSySx7V3EY4vJJC9-C7TIMkvJ_x0m00" class="plain reveal stretch" alt-text="Diagramme de séparation des couches dans un DSS avec une opération système envoyée au contrôleur GRASP">
 
 --
 
