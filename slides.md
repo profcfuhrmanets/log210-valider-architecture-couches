@@ -117,7 +117,7 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 
 # ⚠️ 
 
-## Vous utilisez un autre framework
+## Vous utilisez un autre framework?
 
 Certaines technologies 🤠 peuvent êtres incompatibles avec cette méthodologie de séparation.
 
