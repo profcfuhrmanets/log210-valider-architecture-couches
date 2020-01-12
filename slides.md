@@ -118,7 +118,7 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 
 ## Symptômes de mauvaise conception
 
-⚠️ Vous avez une méthode *route handler* (avec arguments de requête et réponse HTTP) se trouve dans une classe de domaine, p.ex., `Université`.{align=left}
+⚠️ Vous avez une méthode *route handler* (avec arguments de requête et réponse HTTP) dans une classe de domaine, p.ex., `Université`.{align=left}
   - une telle fonction fait partie de la couche présentation et devrait se trouver dans une classe qui traite les routes, p.ex., `JeuRouteur.ts`
   - revoir la [bonne séparation des couches](#CouchesDSS)
 
