@@ -34,6 +34,7 @@ verticalSeparator: ^--
 
 --
 
+<!-- .slide: id="CouchesDSS" -->
 ## Couches dans le Squelette (DSS)
 
 <img src="http://www.plantuml.com/plantuml/proxy?fmt=svg&cache=no&src=https://raw.githubusercontent.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/master/docs/dss-details-demarrerJeu.puml" class="plain reveal stretch" alt-text="Diagramme de séparation des couches dans un DSS avec une opération système envoyée au contrôleur GRASP">
@@ -115,6 +116,13 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 
 --
 
+## Symptômes de mauvaise conception
+
+Un *route handler* (avec arguments de requête et réponse HTTP) se trouve dans une classe de la couche domaine, p.ex., `Université`.{align=left}
+  - une telle fonction fait partie de la couche présentation et devrait se trouver dans une classe qui traite les routes, p.ex., `JeuRouteur.ts`
+  - revoir la [bonne séparation des couches](#CouchesDSS)
+
+--
 # ⚠️ 
 
 ## Vous utilisez un autre framework?

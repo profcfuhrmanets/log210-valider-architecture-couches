@@ -302,8 +302,9 @@
 
             </section>
         
-            <section >
-                <h2><a id="user-content-couches-dans-le-squelette-dss" class="anchor" href="#couches-dans-le-squelette-dss" aria-hidden="true"></a>Couches dans le Squelette (DSS)</h2>
+            <section id="CouchesDSS">
+                <!-- .slide: id="CouchesDSS" -->
+<h2><a id="user-content-couches-dans-le-squelette-dss" class="anchor" href="#couches-dans-le-squelette-dss" aria-hidden="true"></a>Couches dans le Squelette (DSS)</h2>
 <img src="http://www.plantuml.com/plantuml/proxy?fmt=svg&cache=no&src=https://raw.githubusercontent.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/master/docs/dss-details-demarrerJeu.puml" class="plain reveal stretch" alt-text="Diagramme de séparation des couches dans un DSS avec une opération système envoyée au contrôleur GRASP">
 
             </section>
@@ -374,6 +375,16 @@ public demarrerJeu(req: Request, res: Response, next: NextFunction) {
 </ul>
 </li>
 <li>Le Contrôleur GRASP <strong>n’est pas dans la couche de présentation</strong></li>
+</ul>
+
+            </section>
+        
+            <section >
+                <h2><a id="user-content-symptômes-de-mauvaise-conception" class="anchor" href="#symptômes-de-mauvaise-conception" aria-hidden="true"></a>Symptômes de mauvaise conception</h2>
+<p align="left">Un <em>route handler</em> (avec arguments de requête et réponse HTTP) se trouve dans une classe de la couche domaine, p.ex., <code>Université</code>.</p>
+<ul>
+<li>une telle fonction fait partie de la couche présentation et devrait se trouver dans une classe qui traite les routes, p.ex., <code>JeuRouteur.ts</code></li>
+<li>revoir la <a href="#CouchesDSS">bonne séparation des couches</a></li>
 </ul>
 
             </section>
