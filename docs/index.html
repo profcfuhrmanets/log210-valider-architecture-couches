@@ -345,7 +345,7 @@
                 <h2><a id="user-content-opération-système-codée" class="anchor" href="#opération-système-codée" aria-hidden="true"></a>Opération système codée</h2>
 <!-- .slide: data-background="#ddFFdd" -->
 <pre><code class="language-Typescript">/**
- * démarrer le jeu
+ * démarrer le jeu (express route handler)
  */
 public demarrerJeu(req: Request, res: Response, next: NextFunction) {
   let nom = req.params.nom;
@@ -356,9 +356,9 @@ public demarrerJeu(req: Request, res: Response, next: NextFunction) {
     (req as any).flash('Nouveau jeu pour ' + nom);  // error in ts: Property 'flash' does not exist on type 'Request'.
     res.status(201)
 </code></pre>
-<p class="fragment current-only" data-code-focus="1-4"><code>JeuRouteur.ts</code> (couche présentation) a une méthode correspondant à l’opération système</p>
-<p class="fragment current-only" data-code-focus="4">Mais elle n’a pas la même signature (arguments d’un service Web)</p>
-<p class="fragment current-only" data-code-focus="7-8">Appel de la vraie opération système <code>démarrerJeu(nom)</code></p>
+<p class="fragment current-only" data-code-focus="1-4"><code>JeuRouteur.ts</code> a une méthode <em>route handler</em> qui prépare l’opération système</p>
+<p class="fragment current-only" data-code-focus="4-5">Elle convertit l’argument <code>req</code> d’un service web pour l’appel de l’opération système</p>
+<p class="fragment current-only" data-code-focus="7-8">Appel de l’opération système <code>démarrerJeu(nom)</code></p>
 <p class="fragment current-only" data-code-focus="1-11">Voir tout le code de <a href="https://github.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/blob/f60c624be15cf51c15135a6cec226b9539a65e78/src/routes/JeuRouter.ts#L25"><code>JeuRouteur.ts</code> sur GitHub</a>.</p>
 
             </section>
@@ -381,7 +381,7 @@ public demarrerJeu(req: Request, res: Response, next: NextFunction) {
         
             <section >
                 <h2><a id="user-content-symptômes-de-mauvaise-conception" class="anchor" href="#symptômes-de-mauvaise-conception" aria-hidden="true"></a>Symptômes de mauvaise conception</h2>
-<p align="left">Un <em>route handler</em> (avec arguments de requête et réponse HTTP) se trouve dans une classe de la couche domaine, p.ex., <code>Université</code>.</p>
+<p align="left">⚠️ Vous avez une méthode <em>route handler</em> (avec arguments de requête et réponse HTTP) se trouve dans une classe de domaine, p.ex., <code>Université</code>.</p>
 <ul>
 <li>une telle fonction fait partie de la couche présentation et devrait se trouver dans une classe qui traite les routes, p.ex., <code>JeuRouteur.ts</code></li>
 <li>revoir la <a href="#CouchesDSS">bonne séparation des couches</a></li>
@@ -392,7 +392,7 @@ public demarrerJeu(req: Request, res: Response, next: NextFunction) {
             <section >
                 <h1><a id="user-content-️" class="anchor" href="#️" aria-hidden="true"></a>⚠️</h1>
 <h2><a id="user-content-vous-utilisez-un-autre-framework" class="anchor" href="#vous-utilisez-un-autre-framework" aria-hidden="true"></a>Vous utilisez un autre framework?</h2>
-<p>Certaines technologies 🤠 peuvent êtres incompatibles avec cette méthodologie de séparation.</p>
+<p>Certaines technologies 🤠 peuvent êtres <a href="https://stackoverflow.com/questions/802050/what-is-opinionated-software">incompatibles</a> avec cette méthodologie de séparation.</p>
 <p><strong>Vous devez respecter la contrainte de la séparation des couches.</strong></p>
 <p>Note:
 Demandez à votre enseignant ou chargé de lab pour de l’aide au besoin.</p>

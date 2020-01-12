@@ -82,7 +82,7 @@ Trois opérations système:
 
 ```Typescript
 /**
- * démarrer le jeu
+ * démarrer le jeu (express route handler)
  */
 public demarrerJeu(req: Request, res: Response, next: NextFunction) {
   let nom = req.params.nom;
@@ -94,11 +94,11 @@ public demarrerJeu(req: Request, res: Response, next: NextFunction) {
     res.status(201)
 ```
 
-`JeuRouteur.ts` (couche présentation) a une méthode correspondant à l'opération système {.fragment .current-only data-code-focus=1-4}
+`JeuRouteur.ts` a une méthode *route handler* qui prépare l'opération système {.fragment .current-only data-code-focus=1-4}
 
-Mais elle n'a pas la même signature (arguments d'un service Web) {.fragment .current-only data-code-focus=4}
+Elle convertit l'argument `req` d'un service web pour l'appel de l'opération système {.fragment .current-only data-code-focus=4-5}
 
-Appel de la vraie opération système `démarrerJeu(nom)` {.fragment .current-only data-code-focus=7-8}
+Appel de l'opération système `démarrerJeu(nom)` {.fragment .current-only data-code-focus=7-8}
 
 Voir tout le code de [`JeuRouteur.ts` sur GitHub](https://github.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/blob/f60c624be15cf51c15135a6cec226b9539a65e78/src/routes/JeuRouter.ts#L25). {.fragment .current-only data-code-focus=1-11}
 
@@ -118,7 +118,7 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 
 ## Symptômes de mauvaise conception
 
-Un *route handler* (avec arguments de requête et réponse HTTP) se trouve dans une classe de la couche domaine, p.ex., `Université`.{align=left}
+⚠️ Vous avez une méthode *route handler* (avec arguments de requête et réponse HTTP) se trouve dans une classe de domaine, p.ex., `Université`.{align=left}
   - une telle fonction fait partie de la couche présentation et devrait se trouver dans une classe qui traite les routes, p.ex., `JeuRouteur.ts`
   - revoir la [bonne séparation des couches](#CouchesDSS)
 
@@ -127,7 +127,7 @@ Un *route handler* (avec arguments de requête et réponse HTTP) se trouve dans 
 
 ## Vous utilisez un autre framework?
 
-Certaines technologies 🤠 peuvent êtres incompatibles avec cette méthodologie de séparation.
+Certaines technologies 🤠 peuvent êtres [incompatibles](https://stackoverflow.com/questions/802050/what-is-opinionated-software) avec cette méthodologie de séparation.
 
 **Vous devez respecter la contrainte de la séparation des couches.**
 
