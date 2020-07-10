@@ -1,14 +1,14 @@
-# language: node_js
-# node_js: "8"
+language: node_js
+node_js: "8"
 
-# install: npm install
+install: npm install
 
-# script: npm run generate
+script: npm run generate
 
 deploy:
   provider: pages
   skip_cleanup: true
-  local_dir: export  # uses the HTML-5 output from VSCode Reveal extension
+  local_dir: docs
   github_token: $GITHUB_TOKEN
   on:
     branch: master
