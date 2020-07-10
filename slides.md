@@ -12,6 +12,7 @@ verticalSeparator: ^--
 
 --
 
+<!-- .slide: id="HackingCowboy" -->
 ### Hacking Cowboy 🤠
 
 <img src="http://www.plantuml.com/plantuml/svg/RPBBRjGm58RtVegVi00M5PfaPXPLgSfbYSI8DpYrJn9JNu8le17YUQ3FaHV3BfKhGRo8l_p-JlmlSXCJXPIj4V5EkuK2MSHqDboUGSj_JXIFb4qQlKkEBEDjq6J4h1M3xPBEi6nlEKJnml2Oa3o2dkO4fGFBfBqJIIV3-7JxfRwFb_YQ6UilWgKWPtucgaTkAavtuWp5YEjzlRnEWrqA3EbpSME7v-Ceoy8FiP2yewaClNyumnBM-rZiXx4YVfzruk8vNpQAS3lnqK-wtaxBOhGiuZU6OATG7I4DnOWETNLruhJRoFgDR10_d-fyvfWOAYEUOrf_MyRBl-sXl2Nj-DLJkV-_zM6taVKRsR2HxJUomqPsB7rFEroeYt9VexxHq6ZVwD3eACIfRyEFr3SQ6ksBEBJmaVQD3esEkCHL_SCWlV7XJHTOTTVlcBBqUO5YrDtGn5UlgtPT-j-mKzcQFm00" class="reveal stretch plain" alt-text="Cowboy hacking, beaucoup de couplage">
@@ -21,6 +22,15 @@ verticalSeparator: ^--
 ## Design grâce au DSS
 
 <img src="http://www.plantuml.com/plantuml/svg/XLAxRjim5DtlLrmuYst00YGx6J8KQHFOMol4QnUQlBBPyA6I50gZoFUqtli7-h5UEb6TGKWr41VdeSF7kOj9XDHP0_59krO4OJ6ceo5UWvPdvg0L8Tas7T6ItL68a7HYoPVTDv99DnX9UgU43dIBtpj2oNQl4pP2QaEMN4BhbMwqs1c2m2RXzePmyiaxnzh-b9EJzWvP6mYbx-I1uWIlf6mQAV4dj48-YJrxxiySjg4_HLQVRIpyST29M2UDY14do1-l8c9TZc3L2BQ4vqlA8yL4g3gCnvZwtvPmAb-2bRT2Evgzb_bGZc3L2BR4AwFtXxGFH6w4N_s7lnx1Ri3vH7dyl2dXthiK-Z-6kW2Rnu_R6iWfp8etikezsJFK9IxKuaFUxYtwjZ-zF5RyTpbVtLJrfqOxJH55X_FvmtOxdy-07Oi57tqORW3gwlLdA-3ZPR0SXehPvH0rMAu1-1nOc8917Yii0eyhkEn_ZL2B5Bp3jUX_2KKutVZr384xeZekeZbNgZNvQO5UYvdVpeYtxGD5SUXUSRa0u80Yfm_3Yk_aZkdEchy0" class="reveal stretch plain" alt-text="Design grâce au DSS">
+
+--
+
+## Avantages de la séparation en couches
+
+- On peut remplacer la couche présentation (Express) avec une autre plus facilement
+- Les classes domaine sont plus cohésives
+  - plus faciles à comprendre
+  - plus réutilisables dans une autre application
 
 --
 
@@ -60,8 +70,8 @@ verticalSeparator: ^--
 Trois opérations système:
 1. `démarrerJeu(nom:String)`
 2. `jouer(nom:String)`
-3. `terminerJeu()`
-
+3. `terminerJeu()`  
+Note: tous les arguments sont de type primitif!
 </div>
 </div>
 
@@ -98,13 +108,13 @@ public demarrerJeu(req: Request, res: Response, next: NextFunction) {
 
 Elle convertit l'argument `req` d'un service web pour l'appel de l'opération système {.fragment .current-only data-code-focus=4-5}
 
-Appel de l'opération système `démarrerJeu(nom)` {.fragment .current-only data-code-focus=7-8}
+Appel de l'opération système `démarrerJeu(nom)`, l'argument `nom` est de type primitif `string` {.fragment .current-only data-code-focus=7-8}
 
 Voir tout le code de [`JeuRouteur.ts` sur GitHub](https://github.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/blob/f60c624be15cf51c15135a6cec226b9539a65e78/src/routes/JeuRouter.ts#L25). {.fragment .current-only data-code-focus=1-11}
 
 --
 
-## Inspectez votre code
+### 🧐Inspectez votre code
 
 Pour chaque **opération système** du DSS, il doit y avoir:
 
@@ -113,22 +123,34 @@ Pour chaque **opération système** du DSS, il doit y avoir:
   - **soit** un objet *racine*, un équipement, etc. du MDD
   - **soit** un *contrôleur de cas d'utilisation*, p.ex. **Gestionnaire*Y*** (*Y* == nom du cas d'utilisation)
 - Le Contrôleur GRASP **n'est pas dans la couche de présentation**
+- Des arguments de type primitif (pas d'objets du domaine)
 
 --
 
-## Symptômes de mauvaise conception
+### Symptômes de mauvaise conception 1
 
-⚠️ Vous avez une méthode *route handler* (avec arguments de requête et réponse HTTP) dans une classe de domaine, p.ex., `Université`.{align=left}
-  - une telle fonction fait partie de la couche présentation et devrait se trouver dans une classe qui traite les routes, p.ex., `JeuRouteur.ts`
-  - revoir la [bonne séparation des couches](#CouchesDSS)
+⚠️ Vous instanciez un objet (`new Devoir(...)`) dans un routeur pour le passer dans une opération système.{align=left}
+- 🤠[logique applicative (créer des objets du domaine) dans la couche présentation (routeur)](#HackingCowboy)
+- ✔️Arguments avec type primitif dans une opération système
+- ✔️GRASP Créateur s'applique dans la couche domaine
+- ✔️[Bonne séparation des couches](#CouchesDSS)
 
 --
 
-# ⚠️ 
+### Symptômes de mauvaise conception 2
+
+⚠️ Vous avez une méthode *route handler* (avec arguments de requête et réponse HTTP) dans une classe `Université`.{align=left}
+- 🤠logique de routeur (couche présentation) se trouve dans une classe de domaine (`Université` est dans la couche domaine)
+- ✔️un routeur devrait se trouver dans une classe traitant les routes, p. ex., `JeuRouteur.ts`
+- ✔️[bonne séparation des couches](#CouchesDSS)
+
+--
+
+## ⚠️
 
 ## Vous utilisez un autre framework?
 
-Certaines technologies 🤠 peuvent êtres [incompatibles](https://stackoverflow.com/questions/802050/what-is-opinionated-software) avec cette méthodologie de séparation.
+Certaines technologies 🤠 peuvent être [incompatibles](https://stackoverflow.com/questions/802050/what-is-opinionated-software) avec cette méthodologie de séparation. C'est la raison que nous ne permettons d'utiliser d'autres frameworks pour le laboratoire.
 
 **Vous devez respecter la contrainte de la séparation des couches.**
 
