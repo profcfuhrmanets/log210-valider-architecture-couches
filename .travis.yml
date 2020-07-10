@@ -1,5 +1,5 @@
 language: node_js
-node_js: "6"
+node_js: "8"
 
 install: npm install
 
@@ -8,7 +8,8 @@ script: npm run generate
 deploy:
   provider: pages
   skip_cleanup: true
-  local_dir: docs
+  local_dir: docs  # push the docs dir to the (default) gh-pages branch
   github_token: $GITHUB_TOKEN
+  keep_history: true
   on:
     branch: master
