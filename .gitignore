@@ -1,1 +1,5 @@
 node_modules/
+# don't commit docs folder - it will be built via reveal-md with travis
+# there's a step that uses a symbolic link, and if you push that
+# you will break the travis build (index.html will not be linked)
+docs/
