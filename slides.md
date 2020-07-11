@@ -129,8 +129,8 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 
 ### Symptômes de mauvaise conception 1
 
-⚠️ Vous instanciez un objet (`new Devoir(...)`) dans un routeur pour le passer dans une opération système.{align=left}
-- 🤠[logique applicative (créer des objets du domaine) dans la couche présentation (routeur)](#HackingCowboy)
+⚠️ Vous instanciez un objet (`new Devoir(...)`) dans un routeur pour le passer dans une opération système. {align=left}
+- 🤠[Logique applicative (créer des objets du domaine) dans la couche présentation (routeur)](#HackingCowboy)
 - ✔️Arguments avec type primitif dans une opération système
 - ✔️GRASP Créateur s'applique dans la couche domaine
 - ✔️[Bonne séparation des couches](#CouchesDSS)
@@ -139,10 +139,10 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 
 ### Symptômes de mauvaise conception 2
 
-⚠️ Vous avez une méthode *route handler* (avec arguments de requête et réponse HTTP) dans une classe `Université`.{align=left}
-- 🤠logique de routeur (couche présentation) se trouve dans une classe de domaine (`Université` est dans la couche domaine)
-- ✔️un routeur devrait se trouver dans une classe traitant les routes, p. ex., `JeuRouteur.ts`
-- ✔️[bonne séparation des couches](#CouchesDSS)
+⚠️ Vous avez une méthode *route handler* (avec arguments de requête et réponse HTTP) dans une classe `Université`. {align=left}
+- 🤠Logique de routeur (couche présentation) se trouve dans une classe de domaine (`Université` est dans la couche domaine)
+- ✔️Un routeur devrait se trouver dans une classe traitant les routes, p. ex., `JeuRouteur.ts`
+- ✔️[Bonne séparation des couches](#CouchesDSS)
 
 --
 
@@ -150,7 +150,7 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 
 ## Vous utilisez un autre framework?
 
-Certaines technologies 🤠 peuvent être [incompatibles](https://stackoverflow.com/questions/802050/what-is-opinionated-software) avec cette méthodologie de séparation. C'est la raison que nous ne permettons d'utiliser d'autres frameworks pour le laboratoire.
+Certaines technologies 🤠 peuvent être [incompatibles](https://stackoverflow.com/questions/802050/what-is-opinionated-software) avec cette méthodologie de séparation. C'est la raison que nous ne permettons pas l'utilisation d'autres frameworks pour le laboratoire.
 
 **Vous devez respecter la contrainte de la séparation des couches.**
 
