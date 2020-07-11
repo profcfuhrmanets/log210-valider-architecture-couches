@@ -5,6 +5,7 @@ highlightTheme: "github"
 title: "LOG210: Valider l'architecture en couches"
 separator: ^---
 verticalSeparator: ^--
+logoImg: assets/logo_ets.svg
 
 ---
 
@@ -70,8 +71,8 @@ verticalSeparator: ^--
 Trois opérations système:
 1. `démarrerJeu(nom:String)`
 2. `jouer(nom:String)`
-3. `terminerJeu()`  
-Note: tous les arguments sont de type primitif!
+3. `terminerJeu()`
+> Tous les arguments sont de type primitif!
 </div>
 </div>
 
