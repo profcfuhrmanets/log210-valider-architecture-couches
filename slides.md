@@ -6,6 +6,7 @@ title: "LOG210: Valider l'architecture en couches"
 separator: ^---
 verticalSeparator: ^--
 logoImg: assets/logo_ets.svg
+notesSeparator: "Note:"
 
 ---
 
@@ -22,7 +23,7 @@ logoImg: assets/logo_ets.svg
 
 ## Design grâce au DSS
 
-<img src="http://www.plantuml.com/plantuml/svg/XLAxRjim5DtlLrmuYst00YGx6J8KQHFOMol4QnUQlBBPyA6I50gZoFUqtli7-h5UEb6TGKWr41VdeSF7kOj9XDHP0_59krO4OJ6ceo5UWvPdvg0L8Tas7T6ItL68a7HYoPVTDv99DnX9UgU43dIBtpj2oNQl4pP2QaEMN4BhbMwqs1c2m2RXzePmyiaxnzh-b9EJzWvP6mYbx-I1uWIlf6mQAV4dj48-YJrxxiySjg4_HLQVRIpyST29M2UDY14do1-l8c9TZc3L2BQ4vqlA8yL4g3gCnvZwtvPmAb-2bRT2Evgzb_bGZc3L2BR4AwFtXxGFH6w4N_s7lnx1Ri3vH7dyl2dXthiK-Z-6kW2Rnu_R6iWfp8etikezsJFK9IxKuaFUxYtwjZ-zF5RyTpbVtLJrfqOxJH55X_FvmtOxdy-07Oi57tqORW3gwlLdA-3ZPR0SXehPvH0rMAu1-1nOc8917Yii0eyhkEn_ZL2B5Bp3jUX_2KKutVZr384xeZekeZbNgZNvQO5UYvdVpeYtxGD5SUXUSRa0u80Yfm_3Yk_aZkdEchy0" class="reveal stretch plain" alt-text="Design grâce au DSS">
+<img src="http://www.plantuml.com/plantuml/svg/XL9BRjiy4DxFAGREnZPW0PQTBBBuaRy9x5rhnDjkQ79ai-539KSjZ2BdQRtl3NInZfog3WeXrO8OV0zzm-7SPLQ96-yWFzbGgwGyPZuwaZDP_HUpK_ffds8JZ8uk9kIaGXQA0iF16aBoDH_HazzHoi2M7U67tIVIR2lCf6CmoYQwnSyDePQGQ1ahfQqZJu7HHsChgtQE88b9XRqZ7BsB8OYsFNLTi8q1HPi8TMpqWV88hxIkAgtn6zJIeTgBv_xCOPtQKnRrsIR2hmVB93hjLCuuGldaL1atym6i7C0My7n9UQJCXAR1VCpS_l24O_qIRA9NDj3ahSo7-G1M3c0Bl79sV-1z8We3_F8V_FK0TWCXCdNb-_KSxcFWrFvqr2HOF_w_tG05WvtYbQnyI_OCcpdEpEo_hjrRZ7LxUdci_6Su7yFOjAVA1aiPLOFJwSDsEvrEG1opcLozBsu0DkNldor1hjU1yxueXLtqKRtb6a3kWOKh19Ion28LdVlI_mfXepZ5W2lLVbU6SBoEgmc2x8XfBACxhrJjkgS5wXRpIqms4phrUll0KEvthxWC02IWwDBxOYapkHEwyUuN" class="reveal stretch plain" alt-text="Design grâce au DSS">
 
 --
 
@@ -41,14 +42,14 @@ logoImg: assets/logo_ets.svg
 
 ## Couches dans le Squelette
 
-<img src="http://www.plantuml.com/plantuml/proxy?fmt=svg&cache=no&src=https://raw.githubusercontent.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/master/docs/figure-f16.24-web.puml" class="plain reveal stretch" alt-text="Diagramme de séparation des couches avec une opération système envoyée au contrôleur GRASP">
+<img src="http://www.plantuml.com/plantuml/proxy?fmt=svg&cache=no&src=https://raw.githubusercontent.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/master/docs/modeles/figure-f16.24-web.puml" class="plain reveal stretch" alt-text="Diagramme de séparation des couches avec une opération système envoyée au contrôleur GRASP">
 
 --
 
 <!-- .slide: id="CouchesDSS" -->
 ## Couches dans le Squelette (DSS)
 
-<img src="http://www.plantuml.com/plantuml/proxy?fmt=svg&cache=no&src=https://raw.githubusercontent.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/master/docs/dss-details-demarrerJeu.puml" class="plain reveal stretch" alt-text="Diagramme de séparation des couches dans un DSS avec une opération système envoyée au contrôleur GRASP">
+<img src="http://www.plantuml.com/plantuml/proxy?fmt=svg&cache=no&src=https://raw.githubusercontent.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/master/docs/modeles/dss-details-demarrerJeu.puml" class="plain reveal stretch" alt-text="Diagramme de séparation des couches dans un DSS avec une opération système envoyée au contrôleur GRASP">
 
 --
 
@@ -122,7 +123,7 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 - Une méthode ayant **exactement le même nom**
 - Un Contrôleur GRASP qui reçoit la méthode:
   - **soit** un objet *racine*, un équipement, etc. du MDD
-  - **soit** un *contrôleur de cas d'utilisation*, p.ex. **Gestionnaire*Y*** (*Y* == nom du cas d'utilisation)
+  - **soit** un *contrôleur de cas d'utilisation*, ex. **Gestionnaire*Y*** (*Y* == nom du cas d'utilisation)
 - Le Contrôleur GRASP **n'est pas dans la couche de présentation**
 - Des arguments de type primitif (pas d'objets du domaine)
 
@@ -131,9 +132,13 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 ### Symptômes de mauvaise conception 1
 
 ⚠️ Vous instanciez un objet (`new Devoir(...)`) dans un routeur pour le passer dans une opération système. {align=left}
+
 - 🤠[Logique applicative (créer des objets du domaine) dans la couche présentation (routeur)](#HackingCowboy)
-- ✔️Arguments avec type primitif dans une opération système
-- ✔️GRASP Créateur s'applique dans la couche domaine
+
+Correctif:
+
+- ✔️Passer seulement arguments avec type primitif dans une opération système
+- ✔️Appliquer GRASP Créateur dans la couche domaine
 - ✔️[Bonne séparation des couches](#CouchesDSS)
 
 --
@@ -141,8 +146,12 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 ### Symptômes de mauvaise conception 2
 
 ⚠️ Vous avez une méthode *route handler* (avec arguments de requête et réponse HTTP) dans une classe `Université`. {align=left}
-- 🤠Logique de routeur (couche présentation) se trouve dans une classe de domaine (`Université` est dans la couche domaine)
-- ✔️Un routeur devrait se trouver dans une classe traitant les routes, p. ex., `JeuRouteur.ts`
+
+- 🤠Logique de routeur (couche présentation) se trouve dans une classe de domaine (`Université`)
+
+Correctif:
+
+- ✔️Un routeur devrait se trouver dans une classe traitant les routes, ex., `JeuRouteur.ts`
 - ✔️[Bonne séparation des couches](#CouchesDSS)
 
 --
@@ -151,7 +160,7 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 
 ## Vous utilisez un autre framework?
 
-Certaines technologies 🤠 peuvent être [incompatibles](https://stackoverflow.com/questions/802050/what-is-opinionated-software) avec cette méthodologie de séparation. C'est la raison que nous ne permettons pas l'utilisation d'autres frameworks pour le laboratoire.
+Certaines technologies 🤠 peuvent être [incompatibles](https://stackoverflow.com/questions/802050/what-is-opinionated-software) avec cette méthodologie de séparation. C'est la raison que nous ne permettons pas l'utilisation d'autres cadriciels pour le laboratoire.
 
 **Vous devez respecter la contrainte de la séparation des couches.**
 
