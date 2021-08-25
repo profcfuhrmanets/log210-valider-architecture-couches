@@ -7,6 +7,7 @@ separator: ^---
 verticalSeparator: ^--
 logoImg: assets/logo_ets.svg
 notesSeparator: "Note:"
+showProgress: true
 
 ---
 
@@ -93,39 +94,43 @@ Trois opérations système:
 <!-- .slide: data-background="#ddFFdd" -->
 
 ```Typescript
-/**
- * démarrer le jeu (express route handler)
- */
+/* démarrer le jeu (express route handler) */
 public demarrerJeu(req: Request, res: Response, next: NextFunction) {
-  let nom = req.params.nom;
+  const nom = req.body.nom;
   try {
     // Invoquer l'opération système (du DSS) dans le contrôleur GRASP
-    let joueur = this.jeu.demarrerJeu(nom);
-
-    (req as any).flash('Nouveau jeu pour ' + nom);  // error in ts: Property 'flash' does not exist on type 'Request'.
-    res.status(201)
+    const joueur = this._controleurJeu.demarrerJeu(nom);
+    const joueurObj = JSON.parse(joueur);
+    req.flash('info', `Nouveau jeu pour ${nom}`);
+    // ...
+  }
+}
 ```
 
-`JeuRouteur.ts` a une méthode *route handler* qui prépare l'opération système {.fragment .current-only data-code-focus=1-4}
+`JeuRouteur.ts` a une méthode *route handler* qui invoque l'opération système {.fragment .current-only data-code-focus=2}
 
-Elle convertit l'argument `req` d'un service web pour l'appel de l'opération système {.fragment .current-only data-code-focus=4-5}
+Elle décortique l'argument `req` d'un service web pour extraire les arguments de l'opération système {.fragment .current-only data-code-focus=3}
 
-Appel de l'opération système `démarrerJeu(nom)`, l'argument `nom` est de type primitif `string` {.fragment .current-only data-code-focus=7-8}
+Appel de l'opération système `démarrerJeu(nom)`, l'argument `nom` est de type primitif `string` {.fragment .current-only data-code-focus=5-6}
 
-Voir tout le code de [`JeuRouteur.ts` sur GitHub](https://github.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/blob/f60c624be15cf51c15135a6cec226b9539a65e78/src/routes/JeuRouter.ts#L25). {.fragment .current-only data-code-focus=1-11}
+L'objet de retour est une copie de l'objet Joueur (du domaine), pour respecter la séparation des couches. {.fragment .current-only data-code-focus=7}
+
+Voir tout le code de [`JeuRouteur.ts` sur GitHub](https://github.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/blob/609846674a0a454bd1e22d364ef10515018ec81e/src/routes/JeuRouter.ts#L29-L52). {.fragment .current-only data-code-focus=1-11}
 
 --
 
+<!-- .slide: data-background="#ffccff" -->
 ### 🧐Inspectez votre code
 
 Pour chaque **opération système** du DSS, il doit y avoir:
 
-- Une méthode ayant **exactement le même nom**
-- Un Contrôleur GRASP qui reçoit la méthode:
-  - **soit** un objet *racine*, un équipement, etc. du MDD
+- une méthode ayant **exactement le même nom**,
+- des arguments de type primitif,
+- un Contrôleur GRASP qui reçoit la méthode:
+  - **soit** un objet *racine*, un équipement, etc. du MDD. C'est un *contrôleur de façade*.
   - **soit** un *contrôleur de cas d'utilisation*, ex. **Gestionnaire*Y*** (*Y* == nom du cas d'utilisation)
-- Le Contrôleur GRASP **n'est pas dans la couche de présentation**
-- Des arguments de type primitif (pas d'objets du domaine)
+
+Notez que le Contrôleur GRASP **n'est pas dans la couche de présentation**
 
 --
 
@@ -133,13 +138,13 @@ Pour chaque **opération système** du DSS, il doit y avoir:
 
 ⚠️ Vous instanciez un objet (`new Devoir(...)`) dans un routeur pour le passer dans une opération système. {align=left}
 
-- 🤠[Logique applicative (créer des objets du domaine) dans la couche présentation (routeur)](#HackingCowboy)
+- 🤠[Logique applicative (créer des objets du domaine) dans la couche présentation (routeur)](#HackingCowboy).
 
 Correctif:
 
-- ✔️Passer seulement arguments avec type primitif dans une opération système
-- ✔️Appliquer GRASP Créateur dans la couche domaine
-- ✔️[Bonne séparation des couches](#CouchesDSS)
+- ✔️Passer les arguments de type primitif dans une opération système ([éventuellement refactoriser](https://refactoring.com/catalog/introduceParameterObject.html)).
+- ✔️Appliquer GRASP Créateur pour instancier l'objet du domaine dans la couche domaine.
+- ✔️[Bonne séparation des couches](#CouchesDSS).
 
 --
 
@@ -147,12 +152,12 @@ Correctif:
 
 ⚠️ Vous avez une méthode *route handler* (avec arguments de requête et réponse HTTP) dans une classe `Université`. {align=left}
 
-- 🤠Logique de routeur (couche présentation) se trouve dans une classe de domaine (`Université`)
+- 🤠Logique de routeur (couche présentation) se trouve dans une classe de domaine (`Université`).
 
 Correctif:
 
-- ✔️Un routeur devrait se trouver dans une classe traitant les routes, ex., `JeuRouteur.ts`
-- ✔️[Bonne séparation des couches](#CouchesDSS)
+- ✔️Un routeur devrait se trouver dans une classe traitant les routes, ex. `JeuRouteur.ts`.
+- ✔️[Bonne séparation des couches](#CouchesDSS).
 
 --
 

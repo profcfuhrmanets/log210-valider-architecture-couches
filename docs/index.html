@@ -366,39 +366,41 @@
             <section data-background="#ddFFdd">
                 <h2><a id="user-content-opération-système-codée" class="anchor" href="#opération-système-codée" aria-hidden="true"></a>Opération système codée</h2>
 <!-- .slide: data-background="#ddFFdd" -->
-<pre><code class="language-Typescript">/**
- * démarrer le jeu (express route handler)
- */
+<pre><code class="language-Typescript">/* démarrer le jeu (express route handler) */
 public demarrerJeu(req: Request, res: Response, next: NextFunction) {
-  let nom = req.params.nom;
+  const nom = req.body.nom;
   try {
     // Invoquer l'opération système (du DSS) dans le contrôleur GRASP
-    let joueur = this.jeu.demarrerJeu(nom);
-
-    (req as any).flash('Nouveau jeu pour ' + nom);  // error in ts: Property 'flash' does not exist on type 'Request'.
-    res.status(201)
+    const joueur = this._controleurJeu.demarrerJeu(nom);
+    const joueurObj = JSON.parse(joueur);
+    req.flash('info', `Nouveau jeu pour ${nom}`);
+    // ...
+  }
+}
 </code></pre>
-<p class="fragment current-only" data-code-focus="1-4"><code>JeuRouteur.ts</code> a une méthode <em>route handler</em> qui prépare l’opération système</p>
-<p class="fragment current-only" data-code-focus="4-5">Elle convertit l’argument <code>req</code> d’un service web pour l’appel de l’opération système</p>
-<p class="fragment current-only" data-code-focus="7-8">Appel de l’opération système <code>démarrerJeu(nom)</code>, l’argument <code>nom</code> est de type primitif <code>string</code></p>
-<p class="fragment current-only" data-code-focus="1-11">Voir tout le code de <a href="https://github.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/blob/f60c624be15cf51c15135a6cec226b9539a65e78/src/routes/JeuRouter.ts#L25"><code>JeuRouteur.ts</code> sur GitHub</a>.</p>
+<p class="fragment current-only" data-code-focus="2"><code>JeuRouteur.ts</code> a une méthode <em>route handler</em> qui invoque l’opération système</p>
+<p class="fragment current-only" data-code-focus="3">Elle décortique l’argument <code>req</code> d’un service web pour extraire les arguments de l’opération système</p>
+<p class="fragment current-only" data-code-focus="5-6">Appel de l’opération système <code>démarrerJeu(nom)</code>, l’argument <code>nom</code> est de type primitif <code>string</code></p>
+<p class="fragment current-only" data-code-focus="7">L’objet de retour est une copie de l’objet Joueur (du domaine), pour respecter la séparation des couches.</p>
+<p class="fragment current-only" data-code-focus="1-11">Voir tout le code de <a href="https://github.com/profcfuhrmanets/log210-jeu-de-des-node-express-ts/blob/609846674a0a454bd1e22d364ef10515018ec81e/src/routes/JeuRouter.ts#L29-L52"><code>JeuRouteur.ts</code> sur GitHub</a>.</p>
 
             </section>
         
-            <section >
-                <h3><a id="user-content-🧐inspectez-votre-code" class="anchor" href="#🧐inspectez-votre-code" aria-hidden="true"></a>🧐Inspectez votre code</h3>
+            <section data-background="#ffccff">
+                <!-- .slide: data-background="#ffccff" -->
+<h3><a id="user-content-🧐inspectez-votre-code" class="anchor" href="#🧐inspectez-votre-code" aria-hidden="true"></a>🧐Inspectez votre code</h3>
 <p>Pour chaque <strong>opération système</strong> du DSS, il doit y avoir:</p>
 <ul>
-<li>Une méthode ayant <strong>exactement le même nom</strong></li>
-<li>Un Contrôleur GRASP qui reçoit la méthode:
+<li>une méthode ayant <strong>exactement le même nom</strong>,</li>
+<li>des arguments de type primitif,</li>
+<li>un Contrôleur GRASP qui reçoit la méthode:
 <ul>
-<li><strong>soit</strong> un objet <em>racine</em>, un équipement, etc. du MDD</li>
+<li><strong>soit</strong> un objet <em>racine</em>, un équipement, etc. du MDD. C’est un <em>contrôleur de façade</em>.</li>
 <li><strong>soit</strong> un <em>contrôleur de cas d’utilisation</em>, ex. <strong>Gestionnaire<em>Y</em></strong> (<em>Y</em> == nom du cas d’utilisation)</li>
 </ul>
 </li>
-<li>Le Contrôleur GRASP <strong>n’est pas dans la couche de présentation</strong></li>
-<li>Des arguments de type primitif (pas d’objets du domaine)</li>
 </ul>
+<p>Notez que le Contrôleur GRASP <strong>n’est pas dans la couche de présentation</strong></p>
 
             </section>
         
@@ -406,13 +408,13 @@ public demarrerJeu(req: Request, res: Response, next: NextFunction) {
                 <h3><a id="user-content-symptômes-de-mauvaise-conception-1" class="anchor" href="#symptômes-de-mauvaise-conception-1" aria-hidden="true"></a>Symptômes de mauvaise conception 1</h3>
 <p align="left">⚠️ Vous instanciez un objet (<code>new Devoir(...)</code>) dans un routeur pour le passer dans une opération système.</p>
 <ul>
-<li>🤠<a href="#HackingCowboy">Logique applicative (créer des objets du domaine) dans la couche présentation (routeur)</a></li>
+<li>🤠<a href="#HackingCowboy">Logique applicative (créer des objets du domaine) dans la couche présentation (routeur)</a>.</li>
 </ul>
 <p>Correctif:</p>
 <ul>
-<li>✔️Passer seulement arguments avec type primitif dans une opération système</li>
-<li>✔️Appliquer GRASP Créateur dans la couche domaine</li>
-<li>✔️<a href="#CouchesDSS">Bonne séparation des couches</a></li>
+<li>✔️Passer les arguments de type primitif dans une opération système (<a href="https://refactoring.com/catalog/introduceParameterObject.html">éventuellement refactoriser</a>).</li>
+<li>✔️Appliquer GRASP Créateur pour instancier l’objet du domaine dans la couche domaine.</li>
+<li>✔️<a href="#CouchesDSS">Bonne séparation des couches</a>.</li>
 </ul>
 
             </section>
@@ -421,12 +423,12 @@ public demarrerJeu(req: Request, res: Response, next: NextFunction) {
                 <h3><a id="user-content-symptômes-de-mauvaise-conception-2" class="anchor" href="#symptômes-de-mauvaise-conception-2" aria-hidden="true"></a>Symptômes de mauvaise conception 2</h3>
 <p align="left">⚠️ Vous avez une méthode <em>route handler</em> (avec arguments de requête et réponse HTTP) dans une classe <code>Université</code>.</p>
 <ul>
-<li>🤠Logique de routeur (couche présentation) se trouve dans une classe de domaine (<code>Université</code>)</li>
+<li>🤠Logique de routeur (couche présentation) se trouve dans une classe de domaine (<code>Université</code>).</li>
 </ul>
 <p>Correctif:</p>
 <ul>
-<li>✔️Un routeur devrait se trouver dans une classe traitant les routes, ex., <code>JeuRouteur.ts</code></li>
-<li>✔️<a href="#CouchesDSS">Bonne séparation des couches</a></li>
+<li>✔️Un routeur devrait se trouver dans une classe traitant les routes, ex. <code>JeuRouteur.ts</code>.</li>
+<li>✔️<a href="#CouchesDSS">Bonne séparation des couches</a>.</li>
 </ul>
 
             </section>
